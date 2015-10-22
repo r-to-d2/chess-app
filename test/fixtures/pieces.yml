@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  match_id: 1
+  player_id: 1
+  piece_type: MyString
+  num_moves: 1
+  captured: false
+  fromPawn: false
+  current_position_x: 1
+  current_position_y: 1
+
+two:
+  match_id: 1
+  player_id: 1
+  piece_type: MyString
+  num_moves: 1
+  captured: false
+  fromPawn: false
+  current_position_x: 1
+  current_position_y: 1
