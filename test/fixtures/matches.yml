@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  black_player_id: 1
+  white_player_id: 1
+  winner_id: 1
+  draw_offerer_id: 1
+  game_active: false
+  num_turns: 1
+  black_turn: false
+
+two:
+  name: MyString
+  black_player_id: 1
+  white_player_id: 1
+  winner_id: 1
+  draw_offerer_id: 1
+  game_active: false
+  num_turns: 1
+  black_turn: false
