@@ -45,3 +45,13 @@ group :development, :test do
   gem 'spring'
 end
 
+# For testing models
+gem 'factory_girl_rails'
+
+group :development, :test do
+  gem 'rspec-rails'
+end
+
+# Enable Heroku functionality
+gem 'rails_12factor', group: :production
+
