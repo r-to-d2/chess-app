@@ -3,7 +3,7 @@ class CreatePieces < ActiveRecord::Migration
     create_table :pieces do |t|
       t.integer :match_id
       t.integer :player_id
-      t.string  :piece_type
+      t.string :piece_type
       t.integer :num_moves
       t.boolean :captured
       t.boolean :fromPawn
