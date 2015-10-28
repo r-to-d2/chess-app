@@ -50,3 +50,12 @@ group :development, :test do
 end
 
 gem 'rubocop', require: false, group: :development
+
+gem 'simple_form'
+gem "twitter-bootstrap-rails"
+
+
+
+
+
+
