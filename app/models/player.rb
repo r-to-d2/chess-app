@@ -1,3 +1,4 @@
+# Player (aka user) model
 class Player < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
