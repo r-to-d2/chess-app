@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
-  get 'welcome/index'
+  get 'games/new'
+
+  get 'games/create'
+
+  get 'games/show'
+
   root 'welcome#index'
 end
