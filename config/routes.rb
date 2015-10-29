@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
   devise_for :players
-  get 'welcome/index'
+
+  get 'games/new'
+
+  get 'games/create'
+
+  get 'games/show'
+
   root 'welcome#index'
 end
