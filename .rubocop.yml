@@ -6,6 +6,7 @@ AllCops:
   Exclude:
     - db/schema.rb
     - db/migrate/*  #may be able to remove after merge
+    - config/initializers/devise.rb
 
 Lint/HandleExceptions:
   Exclude:

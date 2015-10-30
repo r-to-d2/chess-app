@@ -11,79 +11,53 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151028083735) do
+ActiveRecord::Schema.define(version: 20151026004359) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "game_moves", force: :cascade do |t|
-    t.integer  "match_id"
-    t.string   "piece_name"
-    t.boolean  "black_piece"
-    t.integer  "from_coord_x"
-    t.integer  "from_coord_y"
-    t.integer  "to_coord_x"
-    t.integer  "to_coord_y"
-    t.string   "algebraic_notation"
-    t.string   "captured_piece"
-    t.boolean  "castled"
-    t.string   "promotion_choice"
-    t.boolean  "en_passant"
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
-  end
-
-  add_index "game_moves", ["match_id"], name: "index_game_moves_on_match_id", using: :btree
-
   create_table "games", force: :cascade do |t|
-    t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "match_invites", force: :cascade do |t|
-    t.integer  "match_id"
-    t.integer  "host_id"
-    t.integer  "guest_id"
-    t.boolean  "accepted"
-    t.boolean  "guest_chose_black"
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
-  end
-
-  add_index "match_invites", ["guest_id"], name: "index_match_invites_on_guest_id", using: :btree
-  add_index "match_invites", ["host_id"], name: "index_match_invites_on_host_id", using: :btree
-
-  create_table "matches", force: :cascade do |t|
-    t.string   "name"
+    t.string   "game_name"
     t.integer  "black_player_id"
     t.integer  "white_player_id"
     t.integer  "winner_id"
-    t.integer  "draw_offerer_id"
-    t.boolean  "game_active"
-    t.integer  "num_turns"
-    t.boolean  "black_turn"
+    t.integer  "current_turn"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
   end
 
-  add_index "matches", ["black_player_id"], name: "index_matches_on_black_player_id", using: :btree
-  add_index "matches", ["white_player_id"], name: "index_matches_on_white_player_id", using: :btree
+  add_index "games", ["black_player_id"], name: "index_games_on_black_player_id", using: :btree
+  add_index "games", ["white_player_id"], name: "index_games_on_white_player_id", using: :btree
 
   create_table "pieces", force: :cascade do |t|
-    t.integer  "match_id"
+    t.integer  "game_id"
     t.integer  "player_id"
     t.string   "piece_type"
-    t.integer  "num_moves"
-    t.boolean  "captured"
-    t.boolean  "fromPawn"
     t.integer  "current_position_x"
     t.integer  "current_position_y"
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
   end
 
-  add_index "pieces", ["match_id"], name: "index_pieces_on_match_id", using: :btree
-  add_index "pieces", ["player_id", "match_id"], name: "index_pieces_on_player_id_and_match_id", using: :btree
+  add_index "pieces", ["game_id"], name: "index_pieces_on_game_id", using: :btree
+  add_index "pieces", ["player_id", "game_id"], name: "index_pieces_on_player_id_and_game_id", using: :btree
+
+  create_table "players", force: :cascade do |t|
+    t.string   "email",                  default: "", null: false
+    t.string   "encrypted_password",     default: "", null: false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",          default: 0,  null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.inet     "current_sign_in_ip"
+    t.inet     "last_sign_in_ip"
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
+  end
+
+  add_index "players", ["email"], name: "index_players_on_email", unique: true, using: :btree
+  add_index "players", ["reset_password_token"], name: "index_players_on_reset_password_token", unique: true, using: :btree
 
 end
