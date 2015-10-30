@@ -10,3 +10,4 @@ AllCops:
 Lint/HandleExceptions:
   Exclude:
     - bin/rake
+    - bin/rails
